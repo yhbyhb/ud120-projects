@@ -31,11 +31,21 @@ plt.show()
 ### your code here!  name your classifier object clf if you want the 
 ### visualization code (prettyPicture) to show you the decision boundary
 
+from sklearn import neighbors, datasets
+clf = neighbors.KNeighborsClassifier(n_neighbors=10, weights='distance')
 
+from time import time
+t0 = time()
+clf = clf.fit(features_train, labels_train)
+print "training time:", round(time()-t0, 3), "s"
 
+t0 = time()
+pred = clf.predict(features_test)
+print "predicting time:", round(time()-t0, 3), "s"
 
-
-
+from sklearn.metrics import accuracy_score
+acc = accuracy_score(pred, labels_test)
+print "accuracy :", round(acc, 4)
 
 
 try:
