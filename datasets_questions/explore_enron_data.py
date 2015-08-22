@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #!/usr/bin/python
 
 """ 
@@ -41,3 +42,6 @@ print "James Prentice's Stock :", enron_data['PRENTICE JAMES']['total_stock_valu
 
 # How many email messages do we have from Wesley Colwell to persons of interest?
 print "Wesley Colwell's Emails :", enron_data['COLWELL WESLEY']['from_this_person_to_poi']
+
+# What’s the value of stock options exercised by Jeffrey Skilling?
+print "Jeff Skilling's Stock Options :", enron_data['SKILLING JEFFREY K']['exercised_stock_options']
