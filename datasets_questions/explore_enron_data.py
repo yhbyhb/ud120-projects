@@ -45,3 +45,8 @@ print "Wesley Colwell's Emails :", enron_data['COLWELL WESLEY']['from_this_perso
 
 # What’s the value of stock options exercised by Jeffrey Skilling?
 print "Jeff Skilling's Stock Options :", enron_data['SKILLING JEFFREY K']['exercised_stock_options']
+
+# Of these three individuals (Lay, Skilling and Fastow), who took home the most money (largest value of “total_payments” feature)? 
+# How much money did that person get?
+print "SO MUCH MONEY :", enron_data['LAY KENNETH L']['total_payments']
+# enron_data['SKILLING JEFFREY K']['total_payments'], enron_data['FASTOW ANDREW S']['total_payments']
