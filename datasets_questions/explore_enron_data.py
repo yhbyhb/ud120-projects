@@ -22,18 +22,22 @@ from time import time
 sys.path.append("../final_project/")
 from poi_email_addresses import poiEmails
 from pprint import pprint
+import pandas as pd
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
+
+mod_data = []
+for k, v in enron_data.iteritems():
+	row = v
+	row['name'] = k
+	mod_data.append(row)
+df = pd.DataFrame(mod_data)
 
 print "Data points :", len(enron_data)
 
 print "Featrues :", len(enron_data["SKILLING JEFFREY K"])
 
-poi_count = 0
-for k, v in enron_data.iteritems():
-	if v['poi'] == True:
-	 	poi_count += 1
-print 'number of poi :', poi_count
+print 'number of poi :', len(df[df.poi == True])
 
 # print len(poiEmails())
 
@@ -48,5 +52,8 @@ print "Jeff Skilling's Stock Options :", enron_data['SKILLING JEFFREY K']['exerc
 
 # Of these three individuals (Lay, Skilling and Fastow), who took home the most money (largest value of “total_payments” feature)? 
 # How much money did that person get?
-print "SO MUCH MONEY :", enron_data['LAY KENNETH L']['total_payments']
-# enron_data['SKILLING JEFFREY K']['total_payments'], enron_data['FASTOW ANDREW S']['total_payments']
+people = ['LAY KENNETH L', 'SKILLING JEFFREY K', 'FASTOW ANDREW S']
+people_df = df.loc[df['name'].isin(people)]
+top_payment = people_df['total_payments'].max()
+top_payment_name = people_df[people_df.total_payments == top_payment]['name'].values[0]
+print "SO MUCH MONEY, name : {}, total_payments : {}".format(top_payment_name, top_payment)
