@@ -57,3 +57,6 @@ people_df = df.loc[df['name'].isin(people)]
 top_payment = people_df['total_payments'].max()
 top_payment_name = people_df[people_df.total_payments == top_payment]['name'].values[0]
 print "SO MUCH MONEY, name : {}, total_payments : {}".format(top_payment_name, top_payment)
+
+# How many folks in this dataset have a quantified salary? What about a known email address?
+print "salary : {}, email address : {}".format(len(df[df.salary != 'NaN']), len(df[df.email_address != 'NaN']))
