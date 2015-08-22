@@ -16,6 +16,11 @@
 """
 
 import pickle
+import sys
+from time import time
+sys.path.append("../final_project/")
+from poi_email_addresses import poiEmails
+from pprint import pprint
 
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
@@ -28,3 +33,8 @@ for k, v in enron_data.iteritems():
 	if v['poi'] == True:
 	 	poi_count += 1
 print 'number of poi :', poi_count
+
+# print len(poiEmails())
+
+# What is the total value of the stock belonging to James Prentices
+print "James Prentice's Stock :", enron_data['PRENTICE JAMES']['total_stock_value']
