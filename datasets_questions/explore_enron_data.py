@@ -21,6 +21,8 @@ import sys
 from time import time
 sys.path.append("../final_project/")
 from poi_email_addresses import poiEmails
+sys.path.append("../tools/")
+from feature_format import *
 from pprint import pprint
 import pandas as pd
 
@@ -60,3 +62,13 @@ print "SO MUCH MONEY, name : {}, total_payments : {}".format(top_payment_name, t
 
 # How many folks in this dataset have a quantified salary? What about a known email address?
 print "salary : {}, email address : {}".format(len(df[df.salary != 'NaN']), len(df[df.email_address != 'NaN']))
+
+# Dict-to-array conversion
+# data_dictionary = enron_data
+# feature_list = ["poi", "salary", "bonus"]
+# data_array = featureFormat( data_dictionary, feature_list )
+# label, features = targetFeatureSplit(data_array)
+
+# How many people in the E+F dataset (as it currently exists) have “NaN” for their total payments? What percentage of people in the dataset as a whole is this?
+nan_payment = len(df[df.total_payments == 'NaN'])
+print "{} of {} are NaN. {} %".format(nan_payment, len(df), nan_payment / float(len(df)) * 100.)
