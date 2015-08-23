@@ -72,3 +72,8 @@ print "salary : {}, email address : {}".format(len(df[df.salary != 'NaN']), len(
 # How many people in the E+F dataset (as it currently exists) have “NaN” for their total payments? What percentage of people in the dataset as a whole is this?
 nan_payment = len(df[df.total_payments == 'NaN'])
 print "{} of {} are NaN. {} %".format(nan_payment, len(df), nan_payment / float(len(df)) * 100.)
+
+# How many POIs in the E+F dataset have “NaN” for their total payments? What percentage of POI’s as a whole is this?
+poi_df = df[df.poi == True]
+poi_nan_payment = len(poi_df[poi_df.total_payments == 'NaN'])
+print "{} of {} are NaN. {} %".format(poi_nan_payment, len(poi_df), poi_nan_payment / float(len(poi_df)) * 100.)
