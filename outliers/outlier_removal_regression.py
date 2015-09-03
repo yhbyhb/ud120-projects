@@ -30,6 +30,8 @@ reg = LinearRegression()
 reg.fit(ages_train, net_worths_train)
 print 'slope :', reg.coef_
 
+test_score = reg.score(ages_test, net_worths_test)
+print 'test_score :', test_score
 
 try:
     plt.plot(ages, reg.predict(ages), color="blue")
