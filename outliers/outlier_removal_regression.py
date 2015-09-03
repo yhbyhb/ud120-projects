@@ -67,6 +67,7 @@ if len(cleaned_data) > 0:
         reg.fit(ages, net_worths)
 
         print 'new slope :', reg.coef_
+        print 'test_score :', reg.score(ages_test, net_worths_test)
 
         plt.plot(ages, reg.predict(ages), color="blue")
 
