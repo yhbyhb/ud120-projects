@@ -78,6 +78,7 @@ Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=fe
 df = pd.DataFrame(data_dict).T
 df = df.replace('NaN', np.nan)
 print 'exercised_stock_options, max : {}, min : {}'.format(df['exercised_stock_options'].max(), df['exercised_stock_options'].min())
+print 'salary, max : {}, min : {}'.format(df['salary'].max(), df['salary'].min())
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
