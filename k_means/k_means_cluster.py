@@ -14,8 +14,9 @@ import matplotlib.pyplot as plt
 import sys
 sys.path.append("../tools/")
 from feature_format import featureFormat, targetFeatureSplit
-
-
+import pandas as pd
+import numpy as np
+from pprint import pprint
 
 
 def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature 1", f2_name="feature 2"):
@@ -35,7 +36,7 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
     plt.xlabel(f1_name)
     plt.ylabel(f2_name)
     plt.savefig(name)
-    plt.show()
+    # plt.show()
 
 
 
@@ -62,7 +63,7 @@ poi, finance_features = targetFeatureSplit( data )
 ### (as it's currently written, line below assumes 2 features)
 for f1, f2, f3 in finance_features:
     plt.scatter( f1, f2 )
-plt.show()
+# plt.show()
 
 
 
@@ -74,6 +75,9 @@ clf = KMeans(n_clusters=2)
 pred = clf.fit_predict( finance_features )
 Draw(pred, finance_features, poi, name="clusters_before_scaling.pdf", f1_name=feature_1, f2_name=feature_2)
 
+df = pd.DataFrame(data_dict).T
+df = df.replace('NaN', np.nan)
+print 'exercised_stock_options, max : {}, min : {}'.format(df['exercised_stock_options'].max(), df['exercised_stock_options'].min())
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
