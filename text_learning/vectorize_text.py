@@ -82,3 +82,4 @@ doc_mat = vectorizer.fit(word_data)
 doc_mat = vectorizer.transform(word_data)
 names = vectorizer.get_feature_names()
 print len(names)
+print names[34597]
