@@ -41,29 +41,29 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         ### only look at first 200 emails when developing
         ### once everything is working, remove this line to run over full dataset
         temp_counter += 1
-        if temp_counter < 200:
-            path = os.path.join('..', path[:-1])
-            print path
-            email = open(path, "r")
+        # if temp_counter < 200:
+        path = os.path.join('..', path[:-1])
+        print path
+        email = open(path, "r")
 
-            ### use parseOutText to extract the text from the opened email
-            words = parseOutText(email)
+        ### use parseOutText to extract the text from the opened email
+        words = parseOutText(email)
 
-            ### use str.replace() to remove any instances of the words
-            ### ["sara", "shackleton", "chris", "germani"]
-            for discard in ["sara", "shackleton", "chris", "germani"]:
-                words = words.replace(discard, "")
+        ### use str.replace() to remove any instances of the words
+        ### ["sara", "shackleton", "chris", "germani"]
+        for discard in ["sara", "shackleton", "chris", "germani"]:
+            words = words.replace(discard, "")
 
-            ### append the text to word_data
-            word_data.append(words)
+        ### append the text to word_data
+        word_data.append(words)
 
-            ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
-            if name == "sara":
-                from_data.append(0)
-            elif name =="chris":
-                from_data.append(1)
+        ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
+        if name == "sara":
+            from_data.append(0)
+        elif name =="chris":
+            from_data.append(1)
 
-            email.close()
+        email.close()
 
 print "emails processed"
 from_sara.close()
@@ -81,3 +81,4 @@ vectorizer = TfidfVectorizer(stop_words = 'english')
 doc_mat = vectorizer.fit(word_data)
 doc_mat = vectorizer.transform(word_data)
 names = vectorizer.get_feature_names()
+print len(names)
