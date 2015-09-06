@@ -49,3 +49,6 @@ print 'the number of this feature :', clf.feature_importances_.argmax()
 
 print 'the most powerful word :', vectorizer.get_feature_names()[clf.feature_importances_.argmax()]
 
+importance_array = clf.feature_importances_
+outlier_array = numpy.where(importance_array > 0.2)
+print 'number of outliers :', len(outlier_array)
