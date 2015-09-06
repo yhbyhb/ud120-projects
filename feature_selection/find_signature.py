@@ -47,4 +47,5 @@ print 'accuracy :', acc
 print 'the importance of the most important feature :',  clf.feature_importances_.max()
 print 'the number of this feature :', clf.feature_importances_.argmax()
 
+print 'the most powerful word :', vectorizer.get_feature_names()[clf.feature_importances_.argmax()]
 
