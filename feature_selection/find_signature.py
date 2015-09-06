@@ -44,5 +44,7 @@ from sklearn.metrics import accuracy_score
 acc = accuracy_score(pred, labels_test)
 print 'accuracy :', acc
 
+print 'the importance of the most important feature :',  clf.feature_importances_.max()
+print 'the number of this feature :', clf.feature_importances_.argmax()
 
 
