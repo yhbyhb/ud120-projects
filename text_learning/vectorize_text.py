@@ -76,5 +76,8 @@ print word_data[152]
 
 
 ### in Part 4, do TfIdf vectorization here
-
-
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer(stop_words = 'english')
+doc_mat = vectorizer.fit(word_data)
+doc_mat = vectorizer.transform(word_data)
+names = vectorizer.get_feature_names()
