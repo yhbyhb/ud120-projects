@@ -68,7 +68,7 @@ for f1, f2, f3 in finance_features:
 
 
 from sklearn.cluster import KMeans
-features_list = ["poi", feature_1, feature_2, feature_3]
+features_list = ["poi", feature_1, feature_2]
 data2 = featureFormat(data_dict, features_list )
 poi, finance_features = targetFeatureSplit( data2 )
 clf = KMeans(n_clusters=2)
@@ -88,7 +88,7 @@ try:
 except NameError:
     print "no predictions object named pred found, no clusters to plot"
 
-
-
-
-
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+rescaled_features = scaler.fit_transform(finance_features)
+print 'rescaled finance_features : ', scaler.transform([20000., 1000000.])
