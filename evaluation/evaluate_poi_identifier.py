@@ -46,6 +46,13 @@ print "accuracy :", accuracy_score(np.zeros(29), labels_test)
 
 print "true positives :", len(np.where((pred + labels_test) ==2)[0])
 
-from sklearn.metrics import classification_report
+from sklearn.metrics import *
 print classification_report(labels_test, pred)
 
+predictions = np.array([0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1])
+true_labels = np.array([0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0])
+confMat = confusion_matrix(true_labels, predictions)
+print "true\\predictions\t0\t1"
+print " 0               \t{}\t{}".format(confMat[0][0], confMat[0][1])
+print " 1               \t{}\t{}".format(confMat[1][0], confMat[1][1])
+print classification_report(true_labels, predictions)
