@@ -44,3 +44,5 @@ print "total people :", len(labels_test)
 import numpy as np
 print "accuracy :", accuracy_score(np.zeros(29), labels_test)
 
+print "true positives :", len(np.where((pred + labels_test) ==2)[0])
+
