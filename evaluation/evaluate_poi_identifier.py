@@ -41,4 +41,6 @@ print "accuracy :", acc
 print "predicted POI : ", sum(pred)
 print "total people :", len(labels_test)
 
+import numpy as np
+print "accuracy :", accuracy_score(np.zeros(29), labels_test)
 
