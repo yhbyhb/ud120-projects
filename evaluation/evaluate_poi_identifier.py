@@ -46,3 +46,6 @@ print "accuracy :", accuracy_score(np.zeros(29), labels_test)
 
 print "true positives :", len(np.where((pred + labels_test) ==2)[0])
 
+from sklearn.metrics import classification_report
+print classification_report(labels_test, pred)
+
